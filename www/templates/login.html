@@ -1,0 +1,88 @@
+<ion-view>
+    <ion-header-bar class="bar-assertive">
+        <h1 class="title">Login</h1>
+    </ion-header-bar>
+    <ion-content>
+        <form name="logInForm">
+            <div class="list">
+              <label class="item item-input item-floating-label">
+                <span class="input-label">User Name</span>
+                <input type="text" placeholder="User Name" name="name" ng-model="user.username" required>
+                <div ng-show='isError' ng-messages='logInForm.name.$error' class="error">
+                    <div ng-message='required'>
+                        Please Enter Username
+                    </div>
+                </div>
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Password</span>
+                <input type="password" placeholder="Password" name="password" required ng-model="user.password">
+                <div ng-show='isError' ng-messages='logInForm.password.$error' class="error">
+                    <div ng-message='required'>
+                        Please Enter password
+                    </div>
+                </div>
+              </label>
+            </div>
+
+            <div class="button-bar">
+                <a class="button button-assertive" ng-click="logIn(user, logInForm);">Sign-In</a>
+                <a class="button" ui-sref="registerUser">Register</a>
+            </div>
+        </form>
+        <div style="color:red">
+            {{errorMsg}}
+        </div>
+    </ion-content>
+</ion-view>
+
+
+<!-- <ion-view>
+    <ion-header-bar class="bar-positive">
+        <h1 class="title">Login</h1>
+    </ion-header-bar>
+    <ion-content class='padding'>
+        <div style='margin-top: 40px;'>
+            <form name='formFactor'>
+                <div class="list">
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">User Name</span>
+                        <input type="text" placeholder="Enter your Username" required name='name' ng-keypress="hideError()" ng-model="user.uName">
+                        <div ng-show='err' ng-messages='formFactor.name.$error' style='font-size: 0.8em;color: red;'>
+                            <div ng-message='required'>
+                                Please Enter Username
+                            </div>
+                        </div>
+                    </label>
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Password</span>
+                        <input type="password" placeholder="Enter your password" required name='password' ng-keypress="hideError()" ng-model="user.pName">
+                        <div ng-show='err' ng-messages='formFactor.password.$error' style='font-size: 0.8em;color: red;'>
+                            <div ng-message='required'>
+                                Please Enter Password
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            </form>
+            <div class='row responsive' style='text-align: center;'>
+                <div class="col " style='  font-style: oblique;font-variant: small-caps;font-weight: 600;' ng-show='isError'>{{errorMsg}}</div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <button ng-click='gotoMainPage(user,formFactor)' class="button button-block button-positive button-small ">
+                        Login
+                    </button>
+                </div>
+                <div class='col'>
+                    <button ng-click="gotoPage('register')" class="button button-block button-small button-stable">
+                        Register
+                    </button>
+                </div>
+            </div>
+            <div class="row responsive" style='text-align: center;'>
+                <div ng-click='forgotPassword()' class="col col-33 col-offset-33" style='cursor: pointer;text-decoration: underline;font-variant: small-caps;font-weight: 600;'>Forgot Password ?</div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view> -->

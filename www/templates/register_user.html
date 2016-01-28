@@ -1,0 +1,57 @@
+<ion-view>
+    <ion-header-bar class="bar-assertive">
+        <button class="button ion-android-arrow-back" ng-click="go('login')"></button>
+        <h1 class="title">Register User</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list">
+            <form name="registerForm">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">First Name</span>
+                    <input type="text" ng-model="user.firstname" name="fname" required placeholder="Enter your first name">
+                    <div ng-show='registerInputError' ng-messages="registerForm.fname.$error" class="error">
+                        <div ng-message="required">First Name is required.</div>
+                    </div>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Last Name</span>
+                    <input type="text" ng-model="user.lastname" name="lname" placeholder="Enter your last name">
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Email</span>
+                    <input type="email" ng-model="user.email" name="email" required placeholder="Enter your email id">
+                    <div ng-show='registerInputError' ng-messages='registerForm.email.$error' class="error">
+                        <div ng-message='required'>This is required.</div>
+                        <div ng-message='email'>Invalid email</div>
+                    </div>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">User Name</span>
+                    <input type="text" ng-model="user.username" name="uname" required placeholder="Choose your user name">
+                    <div ng-show='registerInputError' ng-messages="registerForm.uname.$error" class="error">
+                        <div ng-message="required">User Name is required.</div>
+                    </div>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Password</span>
+                    <input type="password" required name="pass" ng-model="user.password">
+                    <div ng-show='registerInputError' ng-messages="registerForm.password.$error" class="error">
+                        <div ng-message="required">Password is required.</div>
+                    </div>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Confirm Password</span>
+                    <input type="password" required name="confirmpass" ng-model="user.confirmPassword">
+                    <div ng-show='registerInputError' ng-messages="registerForm.confirmpass.$error" class="error">
+                        <div ng-message="required">Confirm your Password</div>
+                    </div>
+                </label>
+            </form>
+        </div>
+
+        <button class="button button-block button-dark" ng-click="registerUser(user, registerForm);">Register</button>
+        <div style="color:red">{{errorRegister}}</div>
+    </ion-content>
+</ion-view>
+
+

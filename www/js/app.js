@@ -5,9 +5,12 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','firebase'])
+angular.module('starter', ['ionic','ngMessages'])
 
 .run(function($ionicPlatform) {
+
+  Parse.initialize("Xa9XMOcSQMQy9n4PPJUJ5Fzn86z5xxWBPMW6CAaD", "Ieq0GSlXOliG9affHfSVl77ManiGDHNWUP2xdTDk");
+  
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -32,7 +35,26 @@ angular.module('starter', ['ionic','firebase'])
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
+  .state('login', {
+    url: '/login',
+    cache:false,
+    templateUrl: 'templates/login.html',
+    controller: 'LoginCtrl'
+  })
+  .state('registerUser', {
+    url: '/registerUser',
+    cache:false,
+    templateUrl: 'templates/register_user.html',
+    controller: 'LoginCtrl'
+  })
+  .state('home', {
+    url: '/home',
+    cache:false,
+    templateUrl: 'templates/home.html',
+    controller: 'HomeCtrl'
+  })
+
+  .state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
@@ -61,8 +83,7 @@ angular.module('starter', ['ionic','firebase'])
     })
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/list');
+  $urlRouterProvider.otherwise('/login');
 
 })
-.constant('FirebaseUrl', 'https://boiling-torch-5711.firebaseio.com/');
 

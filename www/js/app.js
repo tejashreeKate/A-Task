@@ -5,9 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','ngMessages'])
+angular.module('starter', ['ionic','ngMessages','ngCordova'])
 
-.run(function($ionicPlatform) {
+.run(function ($ionicPlatform) {
 
   Parse.initialize("Xa9XMOcSQMQy9n4PPJUJ5Fzn86z5xxWBPMW6CAaD", "Ieq0GSlXOliG9affHfSVl77ManiGDHNWUP2xdTDk");
   
@@ -53,34 +53,46 @@ angular.module('starter', ['ionic','ngMessages'])
     templateUrl: 'templates/home.html',
     controller: 'HomeCtrl'
   })
-
-  .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
+  .state('addTask',{
+    url:'/addTask',
+    cache:false,
+    templateUrl:'templates/addTask.html',
+    controller:'AddTaskCtrl'
+  })
+  .state('contacts',{
+    url:'/contacts',
+    cache:false,
+    templateUrl:'templates/contacts.html',
+    controller:'ContactsCtrl'
   })
 
-  // Each tab has its own nav history stack:
+  // .state('tab', {
+  //   url: '/tab',
+  //   abstract: true,
+  //   templateUrl: 'templates/tabs.html'
+  // })
 
-  .state('tab.list', {
-    url: '/list',
-    views: {
-      'tab-list': {
-        templateUrl: 'templates/list.html',
-        controller: 'ListCtrl'
-      }
-    }
-  })
+  // // Each tab has its own nav history stack:
 
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
+  // .state('tab.list', {
+  //   url: '/list',
+  //   views: {
+  //     'tab-list': {
+  //       templateUrl: 'templates/list.html',
+  //       controller: 'ListCtrl'
+  //     }
+  //   }
+  // })
+
+  // .state('tab.chats', {
+  //     url: '/chats',
+  //     views: {
+  //       'tab-chats': {
+  //         templateUrl: 'templates/tab-chats.html',
+  //         controller: 'ChatsCtrl'
+  //       }
+  //     }
+  //   })
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');

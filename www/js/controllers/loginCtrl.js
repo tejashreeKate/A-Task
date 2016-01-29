@@ -1,5 +1,5 @@
 angular.module('starter')
-.controller('LoginCtrl',function ($scope, $state, $ionicHistory){
+.controller('LoginCtrl',function ($scope, $state, $ionicHistory, $rootScope){
 	console.log("Login controller");
 
 	$scope.user = {};
@@ -61,7 +61,10 @@ angular.module('starter')
 		if(form.$valid){
 			Parse.User.logIn(user.username, user.password, {
 				success:function(user){
-					console.log("log in success");
+					$scope.isError = false;
+					$scope.errorMsg = '';
+					$rootScope.currentUser = user;
+					$scope.emptyUser();
 					$state.go('home');
 				},
 				error:function(user,error){

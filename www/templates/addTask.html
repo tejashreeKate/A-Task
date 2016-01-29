@@ -1,0 +1,25 @@
+<ion-view>
+	<ion-header-bar class="bar-assertive">
+        <button class="button ion-android-arrow-back" ng-click="goBack();"></button>
+        <h1 class="title">Add Task</h1>
+    </ion-header-bar>
+    <ion-content class="padding10">
+		<h6>Add Task</h6>
+		<div class="list">
+		  <label class="item item-input">
+		    <span class="input-label">Task Name</span>
+		    <input type="text" ng-model="task.name">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Task Description</span>
+		    <input type="text" ng-model="task.desc">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Assign To</span>
+		    <input type="text" ng-model="task.assignTo">
+		  </label>
+
+		  <button class="button button-block button-dark"> Create</button>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,5 +1,13 @@
 /* Empty. Add your own CSS if you like */
+.padding10{
+	padding: 10px;
+}
+
 .error{
 	font-size: 0.8em;
 	color: red;
+}
+.add-task{
+	font-size: 3em;
+	color: #666;
 }

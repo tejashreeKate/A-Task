@@ -1,0 +1,16 @@
+<ion-view view-title="My Contacts">
+    <ion-header-bar class="bar-assertive">
+        <button class="button ion-android-arrow-back" ng-click="goBack();"></button>
+        <h1 class="title">My contacts</h1>
+    </ion-header-bar>
+    <ion-content class="padding10">
+    	<h6>Friends</h6>
+    	<div class="list list-inset">
+		  <label class="item item-input">
+		    <i class="icon ion-search placeholder-icon" ng-click="searchUser();"></i>
+		    <input type="text" placeholder="Search" ng-model="contact.search">
+		  </label>
+
+		</div>
+	</ion-content>
+</ion-view>

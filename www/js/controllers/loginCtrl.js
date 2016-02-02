@@ -1,5 +1,5 @@
 angular.module('starter')
-.controller('LoginCtrl',function ($scope, $state, $ionicHistory, $rootScope, FirebaseData){
+.controller('LoginCtrl',function ($scope, $state, $ionicHistory, $rootScope, FirebaseData, $location){
 	console.log("Login controller");
 	var firebaseRef = FirebaseData.ref();
 	$scope.authObj = FirebaseData.authObj();
@@ -75,9 +75,13 @@ angular.module('starter')
 				console.log("Logged in as:", authData.uid);
 			  	$scope.isError = false;
 				$scope.errorMsg = '';
-				$rootScope.currentUser = user;
+				$rootScope.currentUser = {
+					email:user.email,
+					password:user.password,
+					id:authData.uid
+				};
 				$scope.emptyUser();
-				$state.go('home');
+				$location.path('/home/summary');
 		
 			})
 			.catch(function(error) {

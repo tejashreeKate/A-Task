@@ -1,4 +1,18 @@
-<ion-view view-title="Home">
+<ion-tabs class="tabs-top tabs-icon-top tabs-color-active-assertive">
+
+  <ion-tab title="Summary" icon-off="ion-home" icon-on="ion-home" href="#/home/summary">
+    <ion-nav-view name="home-summary"></ion-nav-view>
+  </ion-tab>
+
+  <ion-tab title="Contacts" icon-off="ion-android-contact" icon-on="ion-android-contact" href="#/home/contacts">
+    <ion-nav-view name="home-contacts"></ion-nav-view>
+  </ion-tab>
+
+</ion-tabs>
+
+
+
+<!-- <ion-view view-title="Home">
     <ion-header-bar class="bar-assertive">
         <button class="button ion-android-arrow-back" ng-click="goBack();"></button>
         <h1 class="title">Home</h1>
@@ -9,4 +23,4 @@
 			<span class="ion-plus-circled add-task"></span>
 		</div>
 	</ion-content>
-</ion-view>
+</ion-view> -->

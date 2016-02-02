@@ -51,8 +51,28 @@ angular.module('starter', ['ionic','ngMessages','ngCordova','firebase'])
   .state('home', {
     url: '/home',
     cache:false,
+    abstract:true,
     templateUrl: 'templates/home.html',
     controller: 'HomeCtrl'
+  })
+  .state('home.summary',{
+    url:'/summary',
+    cache:false,
+    views:{
+      'home-summary':{
+        templateUrl:'templates/home_summary.html'      
+      }
+    }
+  })
+  .state('home.contacts',{
+    url:'/contacts',
+    cache:false,
+    views:{
+      'home-contacts':{
+        templateUrl:'templates/contacts.html',
+        controller:'ContactsCtrl'
+      }
+    }
   })
   .state('addTask',{
     url:'/addTask',
@@ -60,13 +80,6 @@ angular.module('starter', ['ionic','ngMessages','ngCordova','firebase'])
     templateUrl:'templates/addTask.html',
     controller:'AddTaskCtrl'
   })
-  .state('contacts',{
-    url:'/contacts',
-    cache:false,
-    templateUrl:'templates/contacts.html',
-    controller:'ContactsCtrl'
-  })
-
   // .state('tab', {
   //   url: '/tab',
   //   abstract: true,

@@ -1,0 +1,13 @@
+<ion-view view-title="Summary">
+	<ion-header-bar class="bar-assertive">
+        <button class="button ion-android-arrow-back" ng-click="goBack();"></button>
+        <h1 class="title">Summary</h1>
+    </ion-header-bar>
+    <ion-content class="padding10">
+		<h6>Welcome {{$root.currentUser.attributes.firstname}}</h6>
+		<div class="add-task-icon pull-right" ng-click="goTo('addTask')">
+			<span class="ion-plus-circled add-task"></span>
+		</div>
+	</ion-content>
+
+</ion-view>

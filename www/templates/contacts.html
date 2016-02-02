@@ -6,11 +6,14 @@
     <ion-content class="padding10">
     	<h6>Friends</h6>
     	<div class="list list-inset">
-		  <label class="item item-input">
-		    <i class="icon ion-search placeholder-icon" ng-click="searchUser();"></i>
-		    <input type="text" placeholder="Search" ng-model="contact.search">
-		  </label>
-
+		    <label class="item item-input">
+		        <i class="icon ion-search placeholder-icon" ng-click="searchUser(search.name)"></i>
+		        <input type="text" placeholder="Search" ng-model="search.name" ng-change="searchUser(search.name)">
+		    </label>
+            <div class="list" ng-show="showPopover">
+                <div class="item item-icon-right" ng-repeat="obj in searchResult">{{obj}}<i class="icon ion-android-add-circle"></i></div>
+            </div>
 		</div>
 	</ion-content>
 </ion-view>
+

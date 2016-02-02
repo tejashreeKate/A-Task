@@ -6,11 +6,11 @@
         <form name="logInForm">
             <div class="list">
               <label class="item item-input item-floating-label">
-                <span class="input-label">User Name</span>
-                <input type="text" placeholder="User Name" name="name" ng-model="user.username" required>
-                <div ng-show='isError' ng-messages='logInForm.name.$error' class="error">
+                <span class="input-label">Email</span>
+                <input type="email" placeholder="Email Id" name="email" ng-model="user.email" required>
+                <div ng-show='isError' ng-messages='logInForm.email.$error' class="error">
                     <div ng-message='required'>
-                        Please Enter Username
+                        Please Enter Email Id
                     </div>
                 </div>
               </label>

@@ -1,7 +1,8 @@
 angular.module('starter')
-.controller('LoginCtrl',function ($scope, $state, $ionicHistory, $rootScope){
+.controller('LoginCtrl',function ($scope, $state, $ionicHistory, $rootScope, FirebaseData){
 	console.log("Login controller");
-
+	var firebaseRef = FirebaseData.ref();
+	$scope.authObj = FirebaseData.authObj();
 	$scope.user = {};
 	$scope.isError = false;
 
@@ -30,21 +31,28 @@ angular.module('starter')
 	$scope.registerUser = function (user,form){
 		if(form.$valid){
 			if($scope.user.password === $scope.user.confirmPassword){
-				var newUser = new Parse.User();
-				newUser.set("firstname",user.firstname)
-				newUser.set("lastname",user.lastname)
-				newUser.set("username",user.username)
-				newUser.set("email",user.email)
-				newUser.set("password",user.password)
-
-				newUser.signUp(null,{
-					success:function(user){
-						$state.go('login')
-						$scope.isError = false;
-					},
-					error:function(user,error){
-						alert("Error: " + error.code + " " + error.message);
-					}
+				console.log("inside if")
+				$scope.authObj.$createUser({
+					email:user.email,
+					password:user.password
+				})
+				.then(function (userData,user){
+					console.log("User with "+userData.uid+"created")
+					firebaseRef.child("users").child(userData.uid).set({
+						firstname:$scope.user.firstname,
+						lastname:$scope.user.lastname,
+						username:$scope.user.username,
+						email:$scope.user.email,
+						password:$scope.user.password
+				    });
+					$scope.emptyUser();
+					alert("You have signed up successfully")
+					$state.go('login')
+					$scope.isError = false;
+				})
+				.catch(function (error,user){
+					$scope.emptyUser();
+					alert(error)
 				})
 			}
 			else{
@@ -59,19 +67,24 @@ angular.module('starter')
 
 	$scope.logIn = function(user,form){
 		if(form.$valid){
-			Parse.User.logIn(user.username, user.password, {
-				success:function(user){
-					$scope.isError = false;
-					$scope.errorMsg = '';
-					$rootScope.currentUser = user;
-					$scope.emptyUser();
-					$state.go('home');
-				},
-				error:function(user,error){
-					$scope.errorMsg = 'Either your user name or password is incorrect';
-					$scope.$apply();
-				}
+			$scope.authObj.$authWithPassword({
+			  email: user.email,
+			  password: user.password
 			})
+			.then(function(authData) {
+				console.log("Logged in as:", authData.uid);
+			  	$scope.isError = false;
+				$scope.errorMsg = '';
+				$rootScope.currentUser = user;
+				$scope.emptyUser();
+				$state.go('home');
+		
+			})
+			.catch(function(error) {
+			  	console.error("Authentication failed:", error);
+			 	$scope.errorMsg = 'Either your user name or password is incorrect';
+				$scope.$apply();
+			});
 		}
 		else{
 			$scope.isError = true;

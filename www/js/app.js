@@ -5,11 +5,11 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','ngMessages','ngCordova'])
+angular.module('starter', ['ionic','ngMessages','ngCordova','firebase'])
 
 .run(function ($ionicPlatform) {
 
-  Parse.initialize("Xa9XMOcSQMQy9n4PPJUJ5Fzn86z5xxWBPMW6CAaD", "Ieq0GSlXOliG9affHfSVl77ManiGDHNWUP2xdTDk");
+  //Parse.initialize("Xa9XMOcSQMQy9n4PPJUJ5Fzn86z5xxWBPMW6CAaD", "Ieq0GSlXOliG9affHfSVl77ManiGDHNWUP2xdTDk");
   
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -24,6 +24,7 @@ angular.module('starter', ['ionic','ngMessages','ngCordova'])
       StatusBar.styleDefault();
     }
   });
+
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -98,4 +99,5 @@ angular.module('starter', ['ionic','ngMessages','ngCordova'])
   $urlRouterProvider.otherwise('/login');
 
 })
+.constant('FirebaseUrl', 'https://boiling-torch-5711.firebaseio.com/');
 

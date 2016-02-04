@@ -26,13 +26,6 @@
                     </div>
                 </label>
                 <label class="item item-input item-stacked-label">
-                    <span class="input-label">User Name</span>
-                    <input type="text" ng-model="user.username" name="uname" required placeholder="Choose your user name">
-                    <div ng-show='registerInputError' ng-messages="registerForm.uname.$error" class="error">
-                        <div ng-message="required">User Name is required.</div>
-                    </div>
-                </label>
-                <label class="item item-input item-stacked-label">
                     <span class="input-label">Password</span>
                     <input type="password" required name="pass" ng-model="user.password">
                     <div ng-show='registerInputError' ng-messages="registerForm.password.$error" class="error">

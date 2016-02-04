@@ -12,9 +12,14 @@ angular.module('starter').factory('FirebaseData',function ($q,FirebaseUrl, $fire
 		search: function(name){
 			var deferred = $q.defer();
 			var userRef = new Firebase(FirebaseUrl+'/users').orderByChild('firstname').equalTo(name);
-			userRef.once("value",function (obj){
-				if(obj.val()){
-					deferred.resolve(obj.exportVal())
+			var res = [];
+			userRef.on("value",function (dataSnapshot){
+				if(dataSnapshot){
+					dataSnapshot.forEach(function (child){
+						res.push(child.exportVal())
+						//deferred.resolve(child.exportVal())
+					})
+					deferred.resolve(res)
 				}
 				else{
 					deferred.reject("No such user found")

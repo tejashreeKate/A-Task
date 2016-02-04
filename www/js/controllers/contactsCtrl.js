@@ -8,8 +8,11 @@ angular.module('starter')
 	$scope.searchUser = function(name,$event){
 		$scope.searchResult = [];
 		FirebaseData.search(name).then(function (data){
+			console.log(data)
 			$scope.showPopover = true;
-			$scope.searchResult.push(name);
+			data.forEach(function (obj){
+				$scope.searchResult.push(obj);	
+			})
 		})
 	}
 })

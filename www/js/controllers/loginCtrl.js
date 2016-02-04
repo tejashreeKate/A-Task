@@ -21,7 +21,6 @@ angular.module('starter')
 		$scope.user = {
 			firstname:"",
 			lastname:"",
-			username:"",
 			email:"",
 			password:"",
 			confirmPassword:""
@@ -41,7 +40,6 @@ angular.module('starter')
 					firebaseRef.child("users").child(userData.uid).set({
 						firstname:$scope.user.firstname,
 						lastname:$scope.user.lastname,
-						username:$scope.user.username,
 						email:$scope.user.email,
 						password:$scope.user.password
 				    });
